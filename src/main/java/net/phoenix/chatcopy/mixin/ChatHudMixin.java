@@ -4,9 +4,9 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.hud.ChatHud;
 import net.minecraft.client.gui.hud.ChatHudLine;
 import net.minecraft.client.gui.screen.ChatScreen;
-import net.minecraft.client.network.message.MessageHandler;
 import net.minecraft.client.util.InputUtil;
 import net.minecraft.text.Text;
+import net.minecraft.util.Util;
 import net.phoenix.chatcopy.mixin.accessors.ChatHudAccessor;
 import org.apache.logging.log4j.LogManager;
 import org.lwjgl.glfw.GLFW;
@@ -27,7 +27,7 @@ public abstract class ChatHudMixin {
     private void onChatClick(double mouseX, double mouseY, CallbackInfoReturnable<Boolean> cir) {
         MinecraftClient client = MinecraftClient.getInstance();
         if (!(client.currentScreen instanceof ChatScreen)) return;
-        if (!InputUtil.isKeyPressed(MinecraftClient.getInstance().getWindow().getHandle(), GLFW.GLFW_KEY_LEFT_CONTROL)) {
+        if (!InputUtil.isKeyPressed(MinecraftClient.getInstance().getWindow().getHandle(), GLFW.GLFW_KEY_LEFT_ALT)) {
             return;
         }
         ChatHudLine message = getMessageAt(mouseX, mouseY);
@@ -47,6 +47,7 @@ public abstract class ChatHudMixin {
         ChatHudAccessor accessor = (ChatHudAccessor) MinecraftClient.getInstance().inGameHud.getChatHud();
         int lineSelected = accessor.invokeGetMessageLineIndex(
                 accessor.invokeToChatLineX(x), accessor.invokeToChatLineY(y));
+
         if (lineSelected == -1) return null;
 
         List<Integer> indexesOfEntryEnds = IntStream.range(0, accessor.getVisibleMessages().size())
