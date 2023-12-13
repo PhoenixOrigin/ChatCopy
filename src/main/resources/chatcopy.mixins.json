@@ -7,7 +7,6 @@
   ],
   "client": [
     "ChatHudMixin",
-    "MessageHandlerMixin",
     "accessors.ChatHudAccessor"
   ],
   "injectors": {
