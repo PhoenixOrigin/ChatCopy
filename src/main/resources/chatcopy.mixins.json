@@ -6,6 +6,8 @@
   "mixins": [
   ],
   "client": [
+    "ChatHudMixin",
+    "accessors.ChatHudAccessor"
   ],
   "injectors": {
     "defaultRequire": 1

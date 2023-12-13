@@ -2,22 +2,25 @@
   "schemaVersion": 1,
   "id": "chatcopy",
   "version": "${version}",
-
   "name": "ChatCopy",
   "description": "A simple mod to copy chat messages with ctrl-click",
-  "authors": [],
-  "contact": {},
-
+  "authors": [
+    "PhoenixOrigin"
+  ],
+  "contact": {
+    "repo": "https://github.com/PhoenixOrigin/ChatCopy"
+  },
   "license": "All-Rights-Reserved",
   "icon": "assets/chatcopy/icon.png",
-
   "environment": "client",
-  "entrypoints": {},
-
-      "mixins": [
-        "chatcopy.mixins.json"
-      ],
-
+  "entrypoints": {
+    "client": [
+      "net.phoenix.chatcopy.ChatCopy"
+    ]
+  },
+  "mixins": [
+    "chatcopy.mixins.json"
+  ],
   "depends": {
     "fabricloader": ">=${loader_version}",
     "minecraft": "${minecraft_version}"
