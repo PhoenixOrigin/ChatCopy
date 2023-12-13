@@ -4,6 +4,7 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.hud.ChatHud;
 import net.minecraft.client.gui.hud.ChatHudLine;
 import net.minecraft.client.gui.screen.ChatScreen;
+import net.minecraft.client.network.message.MessageHandler;
 import net.minecraft.client.util.InputUtil;
 import net.minecraft.text.Text;
 import net.phoenix.chatcopy.mixin.accessors.ChatHudAccessor;
@@ -46,7 +47,6 @@ public abstract class ChatHudMixin {
         ChatHudAccessor accessor = (ChatHudAccessor) MinecraftClient.getInstance().inGameHud.getChatHud();
         int lineSelected = accessor.invokeGetMessageLineIndex(
                 accessor.invokeToChatLineX(x), accessor.invokeToChatLineY(y));
-
         if (lineSelected == -1) return null;
 
         List<Integer> indexesOfEntryEnds = IntStream.range(0, accessor.getVisibleMessages().size())
