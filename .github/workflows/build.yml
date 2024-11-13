@@ -30,4 +30,4 @@ jobs:
           title: Build
           files: |
             LICENSE.txt
-            ./build/libs/ChatCopy-1.0.jar
+            ./build/libs/ChatCopy-*.jar
